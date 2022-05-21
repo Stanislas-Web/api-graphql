@@ -42,5 +42,9 @@ export class ArticleService {
         return { articleId };
       }
 
+      async articlesList(): Promise<Article[]>{
+        return this.articleRepository.find();
+      }
+
       
 }
