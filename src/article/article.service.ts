@@ -5,6 +5,7 @@ import { ArticleCreateInput, ArticleCreateOutput } from './dto/article-create.dt
 import { ArticleUpdateInput, ArticleUpdateOutput } from './dto/article-update.dto';
 import { Article } from './models/article.model';
 import { Args, ArgsType, Field, ID, ObjectType } from "@nestjs/graphql";
+import { ArticleDeleteOutput } from './dto/article-delete.dto';
 
 
 @Injectable()
@@ -33,5 +34,13 @@ export class ArticleService {
         return { article };
       }
 
-      s
+      async articleDelete(
+        articleId: Article['id'],
+      ): Promise<ArticleDeleteOutput> {
+        const article = await this.articleRepository.findOneByOrFail({ id: articleId } as any);
+        await article.remove();
+        return { articleId };
+      }
+
+      
 }
