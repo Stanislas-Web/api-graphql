@@ -8,7 +8,7 @@ export class Article extends BaseEntity{
 
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: String
+    id: String 
 
     @Field(() => String)
     @Column()
@@ -21,10 +21,5 @@ export class Article extends BaseEntity{
     @Field(() => String)
     @Column()
     image: String
-
-
-
-
-
 
 }
